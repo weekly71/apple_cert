@@ -136,7 +136,7 @@ class AppleCert:
 
         p12 = await AppleP12.load(p12_path, password)
         prov = await MobileProvision.load(prov_path)
-        if not p12.uid == prov.uid:
+        if p12.uid != prov.uid:
             raise NotRelatedCert
 
         return cls(p12, prov)
